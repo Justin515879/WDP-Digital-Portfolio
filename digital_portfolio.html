@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin | Cybersecurity & Systems Engineer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500;700&family=Plus+Jakarta+Sans:wght@300;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #00ff41; /* Terminal Green */
+            --secondary: #003b00;
+            --accent: #008f11;
+            --bg: #0d0208;
+            --glass: rgba(0, 255, 65, 0.05);
+            --border: rgba(0, 255, 65, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fira Code', monospace; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: #00ff41; overflow-x: hidden; line-height: 1.6; }
+
+        /* --- Cyber Grid Background --- */
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%);
+            opacity: 0.2;
+        }
+
+        /* --- Security Badge --- */
+        .security-badge {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(0, 255, 65, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid var(--primary);
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.75rem; font-weight: bold; z-index: 1000;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .pulse { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; animation: pulse-animation 1.5s infinite; }
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 65, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); } }
+
+        /* --- Hero Section --- */
+        .hero { 
+            min-height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .hero-title-wrapper { min-height: 120px; display: flex; align-items: center; margin-bottom: 10px; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: #fff; text-shadow: 0 0 20px var(--primary); }
+        #typed { color: var(--primary); }
+
+        .hero-subtitle { font-size: 0.9rem; color: var(--accent); max-width: 700px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
+
+        /* --- Skills Container --- */
+        .skills-container { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+            gap: 15px; width: 100%; max-width: 950px; margin-bottom: 40px;
+        }
+        .skill-card { 
+            background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 20px 10px; 
+            border-radius: 0px; transition: 0.3s; position: relative;
+        }
+        .skill-card:hover { border-color: var(--primary); background: rgba(0, 255, 65, 0.08); transform: translateY(-5px); }
+        .skill-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; display: block; }
+        .skill-card p { font-size: 0.75rem; font-weight: bold; }
+
+        /* --- Action Button --- */
+        .hero-cta {
+            background: transparent; color: var(--primary); padding: 18px 40px; 
+            border: 1px solid var(--primary); text-decoration: none; font-weight: bold;
+            font-size: 0.9rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 4px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); margin-top: 10px;
+        }
+        .hero-cta:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 30px var(--primary); transform: translateY(-3px); }
+
+        /* --- Dossier Section --- */
+        .section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
+        .dossier-container {
+            background: rgba(0, 255, 65, 0.02);
+            border: 1px solid var(--border);
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .dossier-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 30px;
+            font-size: 0.7rem; letter-spacing: 2px;
+        }
+        .dossier-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+        .dossier-stats {
+            display: flex; flex-direction: column; gap: 20px;
+            background: rgba(0, 255, 65, 0.05); padding: 20px; border: 1px dashed var(--border);
+        }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-label { font-size: 0.6rem; color: var(--accent); margin-bottom: 5px; }
+        .stat-value { font-size: 0.8rem; font-weight: bold; color: #fff; }
+
+        /* --- Project Cards --- */
+        .project-card { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; 
+            background: rgba(0, 0, 0, 0.8); border: 1px solid var(--border);
+            padding: 40px; margin-bottom: 40px; align-items: center;
+            transition: 0.3s ease;
+        }
+        .project-card:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); }
+        .project-img { 
+            background: #001100; border: 1px solid var(--border); height: 280px; 
+            display: flex; align-items: center; justify-content: center; font-size: 4rem;
+        }
+        .badge { border: 1px solid var(--primary); color: var(--primary); padding: 4px 12px; font-size: 0.65rem; font-weight: 800; margin-bottom: 15px; display: inline-block; text-transform: uppercase; }
+
+        @media (max-width: 850px) { 
+            .dossier-content, .project-card { grid-template-columns: 1fr; } 
+            .hero-title { font-size: 2.5rem; }
+            .skills-container { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="security-badge">
+        <div class="pulse"></div>
+        <span>System Status: Encrypted</span>
+    </div>
+
+    <div class="grid-bg"></div>
+
+    <section class="hero">
+        <div class="hero-title-wrapper">
+            <h1 class="hero-title"><span id="typed"></span></h1>
+        </div>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+            SEC_ENGINEER // LOW_LEVEL_RESEARCHER // FULL_STACK_ARCHITECT
+        </p>
+        
+        <div class="skills-container" data-aos="fade-up" data-aos-delay="600">
+            <div class="skill-card"><i class="fa-solid fa-user-shield"></i><p>Auth Systems</p></div>
+            <div class="skill-card"><i class="fa-solid fa-key"></i><p>Encryption</p></div>
+            <div class="skill-card"><i class="fa-solid fa-bug-slash"></i><p>Sec-Audit</p></div>
+            <div class="skill-card"><i class="fa-solid fa-mask"></i><p>Bash/OS</p></div>
+            <div class="skill-card"><i class="fa-solid fa-database"></i><p>SQL Injection</p></div>
+            <div class="skill-card"><i class="fa-solid fa-microchip"></i><p>Low-Level</p></div>
+        </div>
+
+        <a href="mailto:your-email@example.com" class="hero-cta" data-aos="fade-up" data-aos-delay="800">
+            Access Terminal <i class="fa-solid fa-chevron-right" style="margin-left: 10px;"></i>
+        </a>
+    </section>
+
+    <section class="section" id="dossier">
+        <div class="dossier-container" data-aos="fade-up">
+            <div class="dossier-header">
+                <span>FILE_REF: JUSTIN_IDENTITY_v2.0</span>
+                <div style="display: flex; align-items: center; gap: 8px;"><div class="pulse"></div> DECRYPTED</div>
+            </div>
+            
+            <div class="dossier-content">
+                <div class="dossier-main">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 20px; letter-spacing: 3px;">PERSONNEL_DOSSIER</h2>
+                    <p style="color: var(--accent); margin-bottom: 20px; font-size: 0.95rem;">
+                        Specializing in the intersection of <span style="color: #fff;">Low-Level Systems</span> and <span style="color: #fff;">Web Infrastructure</span>. My objective is to engineer digital ecosystems that are impenetrable by design.
+                    </p>
+                    <p style="font-size: 0.85rem; border-left: 2px solid var(--accent); padding-left: 20px;">
+                        Methodology: Least Privilege Execution & Multi-Layered Defense. Currently hardening <span style="color: #fff;">Flask</span> applications and exploring hardware-software interfaces via <span style="color: #fff;">Assembly</span>.
+                    </p>
+                </div>
+
+                <div class="dossier-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">OPERATIONAL_BREADTH</span>
+                        <div class="stat-value">HARDWARE_TO_APPLICATION</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">CORE_STACK</span>
+                        <div class="stat-value">PYTHON / C++ / BASH / ASSEMBLY</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 style="text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 50px; letter-spacing: 5px;" data-aos="fade-up">ACTIVE_PROJECTS</h2>
+
+        <div class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3">
+            <div class="project-img"><i class="fa-solid fa-lock"></i></div>
+            <div class="project-content">
+                <div class="badge">WDP: Full-Stack Security</div>
+                <h3>Hardened Flask Gateway</h3>
+                <p style="color: var(--accent); margin-bottom: 15px;">Engineering a secure portal with OAuth 2.0 provider integration and encrypted session management to mitigate common OWASP Top 10 vulnerabilities.</p>
+                <p style="font-size: 0.75rem;">[LOG: SECURE_DEPLOYMENT_ACTIVE]</p>
+            </div>
+        </div>
+
+        <div class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3">
+            <div class="project-content">
+                <div class="badge">UX Design / Defense</div>
+                <h3>Anti-Phishing Portal Design</h3>
+                <p style="color: var(--accent); margin-bottom: 15px;">Redesigning academic interfaces to enhance user trust and prevent social engineering via clear security indicators and frictionless MFA flows.</p>
+                <p style="font-size: 0.75rem;">[LOG: HEURISTIC_ANALYSIS_COMPLETE]</p>
+            </div>
+            <div class="project-img"><i class="fa-solid fa-network-wired"></i></div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 60px; opacity: 0.5; font-size: 0.7rem; letter-spacing: 2px;">
+        <p>IDENT_JUSTIN | PROTOCOL_2026 | ACCESS_GRANTED</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+
+        var typed = new Typed('#typed', {
+            strings: [
+                'JUSTIN.', 
+                'SECURE_BY_DESIGN.', 
+                'ANALYZING_FLASK.', 
+                'HARDENING_SYSTEMS.', 
+                'ASSEMBLY_DEBUGGING.'
+            ],
+            typeSpeed: 50, backSpeed: 20, backDelay: 2500, loop: true, cursorChar: '_'
+        });
+    </script>
+</body>
+</html>
