@@ -119,16 +119,40 @@
             transition: 0.3s ease;
         }
         .project-card:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); }
+        
         .project-img { 
-            background: #001100; border: 1px solid var(--border); height: 280px; 
-            display: flex; align-items: center; justify-content: center; font-size: 4rem;
+            background: #001100; 
+            border: 1px solid var(--border); 
+            height: 280px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden; /* This keeps the image from spilling out */
+            position: relative;
         }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This makes the image fill the box like the icon did */
+            filter: grayscale(100%) brightness(0.6) sepia(1) hue-rotate(80deg) saturate(5); /* "Cyber" Green Tint */
+            transition: 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            filter: grayscale(0%) brightness(1); /* Reveal color on hover */
+            transform: scale(1.05);
+        }
+
+        .project-img i { font-size: 4rem; color: var(--primary); }
+
         .badge { border: 1px solid var(--primary); color: var(--primary); padding: 4px 12px; font-size: 0.65rem; font-weight: 800; margin-bottom: 15px; display: inline-block; text-transform: uppercase; }
 
         @media (max-width: 850px) { 
             .dossier-content, .project-card { grid-template-columns: 1fr; } 
             .hero-title { font-size: 2.5rem; }
             .skills-container { grid-template-columns: repeat(2, 1fr); }
+            .project-img { height: 200px; }
         }
     </style>
 </head>
@@ -200,7 +224,7 @@
 
         <div class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3">
             <div class="project-img">
-                <img src="login_page.png" alt="Screenshot of the login page designed in this project">
+                <img src="login_page.png" alt="Screenshot of the login page">
             </div>
             <div class="project-content">
                 <div class="badge">IT1525-01: Web Development Project (WDP)</div>
@@ -242,12 +266,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
